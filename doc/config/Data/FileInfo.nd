@@ -1,55 +1,55 @@
 1.51
 JavaScript
-/home/nil/src/remoteStorage.js/src/lib/i18n/locales/en.js	1361980396	0	/home/nil/src/remoteStorage.js/src/lib/i18n/locales/en.js
-/home/nil/src/remoteStorage.js/src/modules/deps/vcf.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/deps/vcf.js
-/home/nil/src/remoteStorage.js/src/lib/schedule.js	1361458428	0	/home/nil/src/remoteStorage.js/src/lib/schedule.js
-/home/nil/src/remoteStorage.js/src/lib/store/memory.js	1365246636	1	store.memory
-/home/nil/src/remoteStorage.js/src/lib/sync.js	1365246636	1	sync
-/home/nil/src/remoteStorage.js/doc/pages/howto-include.txt	1361980396	1	Adding remoteStorage to your app
-/home/nil/src/remoteStorage.js/doc/pages/download.txt	1365246744	1	Getting remoteStorage.js
-/home/nil/src/remoteStorage.js/src/modules/music.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/music.js
-/home/nil/src/remoteStorage.js/src/modules/skel.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/skel.js
-/home/nil/src/remoteStorage.js/src/vendor/Math.uuid.js	1361458428	0	/home/nil/src/remoteStorage.js/src/vendor/Math.uuid.js
-/home/nil/src/remoteStorage.js/src/lib/webfinger.js	1365246636	1	webfinger
-/home/nil/src/remoteStorage.js/src/lib/platform.js	1365246636	1	platform
-/home/nil/src/remoteStorage.js/src/lib/caching.js	1365246636	1	/home/nil/src/remoteStorage.js/src/lib/caching.js
-/home/nil/src/remoteStorage.js/src/lib/foreignClient.js	1365246636	1	ForeignClient
+/home/nil/src/remoteStorage.js/src/lib/i18n/locales/en.js	1366101500	0	/home/nil/src/remoteStorage.js/src/lib/i18n/locales/en.js
+/home/nil/src/remoteStorage.js/src/modules/deps/vcf.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/deps/vcf.js
+/home/nil/src/remoteStorage.js/src/lib/schedule.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/schedule.js
+/home/nil/src/remoteStorage.js/src/lib/store/memory.js	1365696788	1	store.memory
+/home/nil/src/remoteStorage.js/src/lib/sync.js	1366101500	1	sync
+/home/nil/src/remoteStorage.js/doc/pages/howto-include.txt	1365696788	1	Adding remoteStorage to your app
+/home/nil/src/remoteStorage.js/doc/pages/download.txt	1366101495	1	Getting remoteStorage.js
+/home/nil/src/remoteStorage.js/src/modules/music.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/music.js
+/home/nil/src/remoteStorage.js/src/modules/skel.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/skel.js
+/home/nil/src/remoteStorage.js/src/vendor/Math.uuid.js	1365696788	0	/home/nil/src/remoteStorage.js/src/vendor/Math.uuid.js
+/home/nil/src/remoteStorage.js/src/lib/webfinger.js	1366101500	1	webfinger
+/home/nil/src/remoteStorage.js/src/lib/platform.js	1365696788	1	platform
+/home/nil/src/remoteStorage.js/src/lib/caching.js	1365696788	1	/home/nil/src/remoteStorage.js/src/lib/caching.js
+/home/nil/src/remoteStorage.js/src/lib/foreignClient.js	1365696788	1	ForeignClient
 /home/nil/src/remoteStorage.js/src/lib/paths.js	1363174621	0	/home/nil/src/remoteStorage.js/src/lib/paths.js
-/home/nil/src/remoteStorage.js/doc/pages/howto-contribute.txt	1351777814	1	Howto contribute
-/home/nil/src/remoteStorage.js/src/modules/root.js	1364210858	0	/home/nil/src/remoteStorage.js/src/modules/root.js
-/home/nil/src/remoteStorage.js/src/lib/wireClient.js	1365244574	1	wireClient
-/home/nil/src/remoteStorage.js/src/modules/calendar.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/calendar.js
-/home/nil/src/remoteStorage.js/src/lib/widget.js	1365246636	1	widget
-/home/nil/src/remoteStorage.js/src/lib/i18n.js	1361458428	1	i18n
-/home/nil/src/remoteStorage.js/doc/pages/promises.txt	1353596981	1	Promises
-/home/nil/src/remoteStorage.js/src/lib/store/pending.js	1365246636	0	/home/nil/src/remoteStorage.js/src/lib/store/pending.js
-/home/nil/src/remoteStorage.js/src/vendor/mailcheck.js	1361458428	0	/home/nil/src/remoteStorage.js/src/vendor/mailcheck.js
-/home/nil/src/remoteStorage.js/src/lib/store/indexedDb.js	1365246636	0	/home/nil/src/remoteStorage.js/src/lib/store/indexedDb.js
-/home/nil/src/remoteStorage.js/src/lib/widget/default.js	1363721958	1	WidgetView
-/home/nil/src/remoteStorage.js/src/lib/i18n/locales/de.js	1361980396	0	/home/nil/src/remoteStorage.js/src/lib/i18n/locales/de.js
-/home/nil/src/remoteStorage.js/src/modules/tasks.js	1361458428	1	remoteStorage.tasks
-/home/nil/src/remoteStorage.js/src/modules/documents.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/documents.js
-/home/nil/src/remoteStorage.js/src/lib/store.js	1365246636	1	store
-/home/nil/src/remoteStorage.js/src/lib/i18n/locales.js	1361458428	0	/home/nil/src/remoteStorage.js/src/lib/i18n/locales.js
-/home/nil/src/remoteStorage.js/src/lib/store/syncTransaction.js	1365244574	1	syncTranscation
-/home/nil/src/remoteStorage.js/src/lib/store/remoteCache.js	1365246636	0	/home/nil/src/remoteStorage.js/src/lib/store/remoteCache.js
-/home/nil/src/remoteStorage.js/src/vendor/validate.js	1361458428	0	/home/nil/src/remoteStorage.js/src/vendor/validate.js
-/home/nil/src/remoteStorage.js/src/remoteStorage.js	1365246744	1	remoteStorage
-/home/nil/src/remoteStorage.js/src/modules/money.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/money.js
-/home/nil/src/remoteStorage.js/doc/pages/schema.txt	1361980396	1	Working with schemas
-/home/nil/src/remoteStorage.js/src/lib/baseClient.js	1365246744	1	BaseClient
-/home/nil/src/remoteStorage.js/src/lib/getputdelete.js	1365246636	1	getputdelete
-/home/nil/src/remoteStorage.js/src/lib/nodeConnect.js	1361458428	1	nodeConnect
-/home/nil/src/remoteStorage.js/src/vendor/IndexedDBShim.js	1361458428	0	/home/nil/src/remoteStorage.js/src/vendor/IndexedDBShim.js
-/home/nil/src/remoteStorage.js/src/lib/util.js	1365246636	1	util
-/home/nil/src/remoteStorage.js/src/remoteStorage-modules.js	1361458428	0	/home/nil/src/remoteStorage.js/src/remoteStorage-modules.js
-/home/nil/src/remoteStorage.js/src/lib/testHelper.js	1361458428	0	/home/nil/src/remoteStorage.js/src/lib/testHelper.js
-/home/nil/src/remoteStorage.js/doc/pages/overview.txt	1365244574	1	Overview
-/home/nil/src/remoteStorage.js/src/lib/access.js	1365246636	0	/home/nil/src/remoteStorage.js/src/lib/access.js
-/home/nil/src/remoteStorage.js/src/modules/contacts.js	1361458428	1	remoteStorage.contacts
-/home/nil/src/remoteStorage.js/src/lib/assets.js	1362162988	0	/home/nil/src/remoteStorage.js/src/lib/assets.js
-/home/nil/src/remoteStorage.js/src/lib/store/common.js	1364210858	0	/home/nil/src/remoteStorage.js/src/lib/store/common.js
-/home/nil/src/remoteStorage.js/src/modules/bookmarks.js	1361458428	0	/home/nil/src/remoteStorage.js/src/modules/bookmarks.js
-/home/nil/src/remoteStorage.js/src/vendor/levenshtein.js	1361458428	0	/home/nil/src/remoteStorage.js/src/vendor/levenshtein.js
-/home/nil/src/remoteStorage.js/src/lib/shell.js	1361458428	0	/home/nil/src/remoteStorage.js/src/lib/shell.js
-/home/nil/src/remoteStorage.js/src/lib/store/localStorage.js	1365246636	1	store.localStorage
+/home/nil/src/remoteStorage.js/doc/pages/howto-contribute.txt	1365696788	1	Howto contribute
+/home/nil/src/remoteStorage.js/src/modules/root.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/root.js
+/home/nil/src/remoteStorage.js/src/lib/wireClient.js	1366101500	1	wireClient
+/home/nil/src/remoteStorage.js/src/modules/calendar.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/calendar.js
+/home/nil/src/remoteStorage.js/src/lib/widget.js	1366101500	1	widget
+/home/nil/src/remoteStorage.js/src/lib/i18n.js	1365696788	1	i18n
+/home/nil/src/remoteStorage.js/doc/pages/promises.txt	1365696788	1	Promises
+/home/nil/src/remoteStorage.js/src/lib/store/pending.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/store/pending.js
+/home/nil/src/remoteStorage.js/src/vendor/mailcheck.js	1365696788	0	/home/nil/src/remoteStorage.js/src/vendor/mailcheck.js
+/home/nil/src/remoteStorage.js/src/lib/store/indexedDb.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/store/indexedDb.js
+/home/nil/src/remoteStorage.js/src/lib/widget/default.js	1366101500	1	WidgetView
+/home/nil/src/remoteStorage.js/src/lib/i18n/locales/de.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/i18n/locales/de.js
+/home/nil/src/remoteStorage.js/src/modules/tasks.js	1365696788	1	remoteStorage.tasks
+/home/nil/src/remoteStorage.js/src/modules/documents.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/documents.js
+/home/nil/src/remoteStorage.js/src/lib/store.js	1365696788	1	store
+/home/nil/src/remoteStorage.js/src/lib/i18n/locales.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/i18n/locales.js
+/home/nil/src/remoteStorage.js/src/lib/store/syncTransaction.js	1365696788	1	syncTranscation
+/home/nil/src/remoteStorage.js/src/lib/store/remoteCache.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/store/remoteCache.js
+/home/nil/src/remoteStorage.js/src/vendor/validate.js	1365696788	0	/home/nil/src/remoteStorage.js/src/vendor/validate.js
+/home/nil/src/remoteStorage.js/src/remoteStorage.js	1366101500	1	remoteStorage
+/home/nil/src/remoteStorage.js/src/modules/money.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/money.js
+/home/nil/src/remoteStorage.js/doc/pages/schema.txt	1365696788	1	Working with schemas
+/home/nil/src/remoteStorage.js/src/lib/baseClient.js	1366101500	1	BaseClient
+/home/nil/src/remoteStorage.js/src/lib/getputdelete.js	1365696788	1	getputdelete
+/home/nil/src/remoteStorage.js/src/lib/nodeConnect.js	1366101500	1	nodeConnect
+/home/nil/src/remoteStorage.js/src/vendor/IndexedDBShim.js	1365696788	0	/home/nil/src/remoteStorage.js/src/vendor/IndexedDBShim.js
+/home/nil/src/remoteStorage.js/src/lib/util.js	1365696788	1	util
+/home/nil/src/remoteStorage.js/src/remoteStorage-modules.js	1365696788	0	/home/nil/src/remoteStorage.js/src/remoteStorage-modules.js
+/home/nil/src/remoteStorage.js/src/lib/testHelper.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/testHelper.js
+/home/nil/src/remoteStorage.js/doc/pages/overview.txt	1365696788	1	Overview
+/home/nil/src/remoteStorage.js/src/lib/access.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/access.js
+/home/nil/src/remoteStorage.js/src/modules/contacts.js	1365696788	1	remoteStorage.contacts
+/home/nil/src/remoteStorage.js/src/lib/assets.js	1366101500	0	/home/nil/src/remoteStorage.js/src/lib/assets.js
+/home/nil/src/remoteStorage.js/src/lib/store/common.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/store/common.js
+/home/nil/src/remoteStorage.js/src/modules/bookmarks.js	1365696788	0	/home/nil/src/remoteStorage.js/src/modules/bookmarks.js
+/home/nil/src/remoteStorage.js/src/vendor/levenshtein.js	1365696788	0	/home/nil/src/remoteStorage.js/src/vendor/levenshtein.js
+/home/nil/src/remoteStorage.js/src/lib/shell.js	1365696788	0	/home/nil/src/remoteStorage.js/src/lib/shell.js
+/home/nil/src/remoteStorage.js/src/lib/store/localStorage.js	1365696788	1	store.localStorage
