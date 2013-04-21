@@ -210,7 +210,46 @@ define(['requirejs'], function(requirejs, undefined) {
           });
           env.client.storeObject('test', 'foo/bar', { foo: 'bar' });
         }
+      },
+
+      {
+        desc: "#getAll without a type",
+        run: function(env, test) {
+          env.client.declareType('foo', { type: 'object' });
+          util.asyncGroup(
+            curry(env.client.storeObject, 'foo', 'a', { name: 'a' }),
+            curry(env.client.storeObject, 'foo', 'b', { name: 'b' }),
+            curry(env.client.storeObject, 'foo', 'c', { name: 'c' })
+          ).then(curry(env.client.getAll, '', undefined)).
+            then(function(objectMap) {
+              test.assert(objectMap, {
+                a: { name: 'a', '@context': 'http://remotestoragejs.com/spec/modules/test/foo' },
+                b: { name: 'b', '@context': 'http://remotestoragejs.com/spec/modules/test/foo' },
+                c: { name: 'c', '@context': 'http://remotestoragejs.com/spec/modules/test/foo' }
+              });
+            });
+        }
+      },
+
+      {
+        desc: "#getAll with a type",
+        run: function(env, test) {
+          env.client.declareType('foo', { type: 'object' });
+          env.client.declareType('bar', { type: 'object' });
+          util.asyncGroup(
+            curry(env.client.storeObject, 'foo', 'a', { name: 'a' }),
+            curry(env.client.storeObject, 'foo', 'b', { name: 'b' }),
+            curry(env.client.storeObject, 'bar', 'c', { name: 'c' })
+          ).then(curry(env.client.getAll, '', 'foo')).
+            then(function(objectMap) {
+              test.assert(objectMap, {
+                a: { name: 'a', '@context': 'http://remotestoragejs.com/spec/modules/test/foo' },
+                b: { name: 'b', '@context': 'http://remotestoragejs.com/spec/modules/test/foo' }
+              });
+            });
+        }
       }
+
 
     ]
   });

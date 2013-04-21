@@ -347,15 +347,14 @@ define([
 
       function filterByType(objectMap) {
         if(typeAlias) {
-          var type = this.resolveTypeAlias(typeAlias);
+          var type = this.types[typeAlias];
           for(var key in objectMap) {
             if(objectMap[key]['@context'] !== type) {
               delete objectMap[key];
             }
           }
-        } else {
-          return objectMap;
         }
+        return objectMap;
       }
 
       function retrieveObjects(listing) {
