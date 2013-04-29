@@ -169,10 +169,13 @@ define([], function() {
     //   f() === o; // -> true, function is still bound to object "o".
     //   (end code)
     //
-    bindAll: function(object) {
+    bindAll: function(object, context) {
+      if(typeof(context) !== 'object') {
+        context = object;
+      }
       for(var key in object) {
         if(typeof(object[key]) === 'function') {
-          object[key] = this.bind(object[key], object);
+          object[key] = this.bind(object[key], context);
         }
       }
       return object;
