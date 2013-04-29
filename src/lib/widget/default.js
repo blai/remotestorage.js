@@ -76,7 +76,7 @@ define(['../util', '../assets', '../i18n'], function(util, assets, i18n) {
   var widgetOptions = {};
 
   function escape(s) {
-    return s.replace(/>/, '&gt;').replace(/</, '&lt;');
+    return s.replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;');
   }
 
   function addEvent(element, eventName, handler) {
