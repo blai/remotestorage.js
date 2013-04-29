@@ -1,4 +1,4 @@
-define(['../util', './common', './syncTransaction'], function(util, common, syncTransactionAdapter) {
+define(['../util', './common', './transaction'], function(util, common, transactionAdapter) {
 
   // Namespace: store.localStorage
   // <StorageAdapter> implementation that keeps data localStorage.
@@ -118,7 +118,7 @@ define(['../util', './common', './syncTransaction'], function(util, common, sync
           promise.fulfill();
         });
       }
-    }, syncTransactionAdapter(store, logger));
+    }, transactionAdapter(store, logger));
   };
 });
 

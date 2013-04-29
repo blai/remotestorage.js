@@ -1,4 +1,4 @@
-define(['../util', './syncTransaction'], function(util, syncTransactionAdapter) {
+define(['../util', './transaction'], function(util, transactionAdapter) {
 
   // Namespace: store.memory
   // <StorageAdapter> implementation that keeps data in memory.
@@ -103,6 +103,6 @@ define(['../util', './syncTransaction'], function(util, syncTransactionAdapter) 
         initNode('/', dataTree);
       }
 
-    }, store, syncTransactionAdapter(store, logger));
+    }, store, transactionAdapter(store, logger));
   };
 });
