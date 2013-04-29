@@ -6,8 +6,9 @@ define([
   './platform',
   './store/memory',
   './store/localStorage',
+  './store/indexedDb',
   './store/pending'
-], function (util, platform, memoryAdapter, localStorageAdapter, pendingAdapter) {
+], function (util, platform, memoryAdapter, localStorageAdapter, indexedDBAdapter, pendingAdapter) {
 
   "use strict";
 
@@ -58,7 +59,11 @@ define([
   // })();
 
   if(typeof(window) !== 'undefined') {
-    setAdapter(localStorageAdapter(window.localStorage));
+    if(typeof(window.indexedDB) !== 'undefined') {
+      setAdapter(indexedDBAdapter(window.indexedDB));
+    } else {
+      setAdapter(localStorageAdapter(window.localStorage));
+    }
   } else {
     console.error("WARNING: falling back to in-memory storage");
     setAdapter(memoryAdapter());
@@ -175,6 +180,7 @@ define([
   //   change w/ origin=remote - unless this is an outgoing change
   //
   function setNodeData(path, data, outgoing, timestamp, mimeType) {
+    console.log('setNodeData', path);
     return dataStore.transaction(true, function(transaction) {
       return getNode(path, transaction).then(function(node) {
 
@@ -375,14 +381,15 @@ define([
     validPath(path);
 
     function adjustTimestamp(transaction) {
-      return util.getPromise(function(promise) {
-        function setTimestamp(t) {
-          if(t) { timestamp = t; }
-          if(node && typeof(timestamp) == 'number') {
-            node.timestamp = timestamp;
-          }
-          promise.fulfill();
+      var promise = util.getPromise();
+      function setTimestamp(t) {
+        if(t) { timestamp = t; }
+        if(node && typeof(timestamp) == 'number') {
+          node.timestamp = timestamp;
         }
+        promise.fulfill();
+      }
+      try {
         if((!meta) && (! timestamp)) {
           if(outgoing) {
             timestamp = getCurrTimestamp();
@@ -395,7 +402,10 @@ define([
         } else {
           setTimestamp();
         }
-      });
+      } catch(exc) {
+        promise.reject(exc);
+      };
+      return promise;
     }
 
     function storeNode(transaction) {
@@ -476,6 +486,7 @@ define([
 
     memory: memoryAdapter,
     localStorage: localStorageAdapter,
+    indexedDB: indexedDBAdapter,
     pending: pendingAdapter,
 
     events: events,
