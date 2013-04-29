@@ -312,6 +312,9 @@ define([], function() {
                     this.emit('error', exc);
                   } else {
                     console.error("Error in '" + eventName + "' event handler:", exc);
+                    if('stack' in exc) {
+                      console.error(exc.stack);
+                    }
                   }
                 }
               }
