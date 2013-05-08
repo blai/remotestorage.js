@@ -1,4 +1,4 @@
-define(['../remoteStorage'], function(remoteStorage) {
+define(['../../src/remoteStorage'], function(remoteStorage) {
 
   remoteStorage.defineModule('root', function(privClient, pubClient) {
 

@@ -21,7 +21,7 @@ define(['requirejs', 'localStorage'], function(requirejs, localStorage) {
         './src/remoteStorage',
         './server/nodejs-example',
         './test/helper/server',
-        './src/modules/root'
+        './test/helper/root-module'
       ], function(_util, remoteStorage, nodejsExampleServer, serverHelper, root) {
         util = _util;
         curry = util.curry;
@@ -58,10 +58,10 @@ define(['requirejs', 'localStorage'], function(requirejs, localStorage) {
 
       env.rsConnect = function() {
         storageInfo = env.serverHelper.getStorageInfo();
-        env.remoteStorage.nodeConnect.setStorageInfo(
+        env.remoteStorage.setStorageInfo(
           storageInfo
         );
-        env.remoteStorage.nodeConnect.setBearerToken(
+        env.remoteStorage.setBearerToken(
           env.serverHelper.getBearerToken()
         );
 

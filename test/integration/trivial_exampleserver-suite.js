@@ -19,7 +19,7 @@ define([
         './src/remoteStorage',
         './src/lib/store',
         './src/lib/sync',
-        './src/modules/root',
+        './test/helper/root-module',
         './server/nodejs-example',
         './test/helper/server'
       ], function(_util, remoteStorage, store, sync, root, nodejsExampleServer, serverHelper) {
@@ -56,10 +56,10 @@ define([
       }
 
       env.rsConnect = function() {
-        env.remoteStorage.nodeConnect.setStorageInfo(
+        env.remoteStorage.setStorageInfo(
           env.serverHelper.getStorageInfo()
         );
-        env.remoteStorage.nodeConnect.setBearerToken(
+        env.remoteStorage.setBearerToken(
           env.serverHelper.getBearerToken()
         );
         return env.remoteStorage.claimAccess('root', 'rw');
