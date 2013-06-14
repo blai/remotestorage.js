@@ -1,4 +1,4 @@
-/* remoteStorage.js 0.7.1 remotestorage.io, MIT-licensed */
+/* remoteStorage.js 0.7-HEAD remotestorage.io, MIT-licensed */
 define([], function() {
 /**
  * almond 0.1.4 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
@@ -1199,7 +1199,9 @@ define('lib/util',[], function() {
 /*global document */
 
 if(typeof(global) !== 'undefined' && typeof(nodeRequire) === 'undefined') {
-  var nodeRequire = require;
+  // some node versions seem to have "global.require" set, while others make
+  // "require" a module-local variable.
+  var nodeRequire = global.require || require;
 }
 
 define('lib/platform',['./util'], function(util) {
@@ -1744,7 +1746,7 @@ define('lib/webfinger',
             return promise.reject(error);
           }
         }
-        var query = '?resource=acct:' + encodeURIComponent(userAddress);
+        var query = '?resource=' + encodeURIComponent('acct:' + userAddress);
         var addresses = [
           '://' + hostname + '/.well-known/webfinger' + query,
           '://' + hostname + '/.well-known/host-meta.json' + query,
@@ -4087,7 +4089,13 @@ define('lib/sync',[
       }
     },
 
-    set: function(path) {},
+    set: function(path, node) {
+      if(caching.cachePath(path)) {
+        return store.setNodeData(path, node.data, true, undefined, node.mimeType);
+      } else {
+        return remoteAdapter.set(path, node);
+      }
+    },
 
     remove: function(path) {
       if(caching.cachePath(path)) {
@@ -4278,8 +4286,8 @@ define('lib/schedule',['./util', './sync'], function(util, sync) {
     var numSyncNow = syncNow.length;
     for(var i=0;i<numSyncNow;i++) {
       var path = syncNow[i];
-      var syncer = path === '/' ? sync.fullSync : sync.partialSync;
-      syncer(path).then(function() {
+      var syncer = path === '/' ? sync.fullSync : util.curry(sync.partialSync, path);
+      syncer().then(function() {
         lastPathSync[path] = new Date().getTime();
 
         syncedCount++;
@@ -4826,7 +4834,7 @@ define('lib/baseClient',[
           newValue: value,
           path: absPath
         };
-        return store.setNodeData(absPath, value, true, undefined, mimeType);
+        return sync.set(absPath, { data: value, mimeType: mimeType });
       }).then(function() {
         fireModuleEvent('change', moduleName, changeEvent);
         if(moduleName !== 'root') {
@@ -4989,6 +4997,11 @@ define('lib/baseClient',[
     //   (end code)
     //
     getObject: function(path) {
+      try {
+        this._verifyPath(path, { rel: true });
+      } catch(exc) {
+        return failedPromise(exc);
+      }
       var fullPath = this.makePath(path);
       return sync.get(fullPath).then(function(node) {
         if(node.mimeType !== 'application/json') {
@@ -5023,10 +5036,10 @@ define('lib/baseClient',[
     //   (end code)
     //
     getListing: function(path) {
-      if(! (util.isDir(path) || path === '')) {
-        return util.getPromise().reject(
-          new Error("Not a directory: " + path)
-        );
+      try {
+        this._verifyPath(path, { rel: true, dir: true });
+      } catch(exc) {
+        return util.getPromise().reject(exc);
       }
       var fullPath = this.makePath(path);
       return sync.get(fullPath).then(function(node) {
@@ -5118,6 +5131,11 @@ define('lib/baseClient',[
     //   });
     //   (end code)
     getFile: function(path) {
+      try {
+        this._verifyPath(path, { rel: true });
+      } catch(exc) {
+        return util.getPromise().reject(exc);
+      }
       var fullPath = this.makePath(path);
       return sync.get(fullPath).then(function(node) {
         return {
@@ -5144,6 +5162,11 @@ define('lib/baseClient',[
     //   path     - Path relative to the module root.
     //
     remove: function(path) {
+      try {
+        this._verifyPath(path, { rel: true, dir: false });
+      } catch(exc) {
+        return util.getPromise().reject(exc);
+      }
       var absPath = this.makePath(path);
       var oldValue;
       return sync.get(absPath).
@@ -5225,14 +5248,13 @@ define('lib/baseClient',[
     //   See <declareType> or the calendar module (src/modules/calendar.js) for examples.
     //
     storeObject: function(typeAlias, path, obj) {
-      if(typeof(path) !== 'string') {
-        return failedPromise(new Error("given path must be a string (got: " + typeof(path) + ")"));
+      try {
+        this._verifyPath(path, { rel: true, dir: false });
+      } catch(exc) {
+        return failedPromise(exc);
       }
       if(typeof(obj) !== 'object') {
         return failedPromise(new Error("given object must be an object (got: " + typeof(obj) + ")"));
-      }
-      if(util.isDir(path)) {
-        return failedPromise(new Error("Can't store directory node"));
       }
 
       var absPath = this.makePath(path);
@@ -5305,6 +5327,11 @@ define('lib/baseClient',[
     // want to happen.
     //
     storeFile: function(mimeType, path, data, cache) {
+      try {
+        this._verifyPath(path, { rel: true, dir: false });
+      } catch(exc) {
+        return failedPromise(exc);
+      }
       cache = (cache !== false);
       if(typeof(mimeType) !== 'string') {
         return failedPromise(new Error("given mimeType must be a string (got: " + typeof(mimeType) + ")"));
@@ -5604,6 +5631,25 @@ define('lib/baseClient',[
     // The UUID is prefixed with the string 'uuid:', to become a valid URI.
     uuid: function() {
       return 'uuid:' + MathUUID.uuid();
+    },
+
+    _verifyPath: function(path, options) {
+      if(typeof(path) !== 'string') {
+        throw "Invalid path: expected a string!";
+      }
+      if(options.rel && path[0] == '/') {
+        throw "Invalid path: must be relative!";
+      } else if(options.abs) {
+        throw "Invalid path: must be absolute!";
+      }
+      if(typeof(options.dir) !== 'undefined') {
+        var isDir = (util.isDir(path) || path === (options.rel ? '' : '/'));
+        if(options.dir && !isDir) {
+          throw "Invalid path: must be a directory!";
+        } else if( !options.dir && isDir) {
+          throw "Invalid paht: may not be a directory!";
+        }
+      }
     }
 
   };
@@ -6338,7 +6384,7 @@ define('lib/widget/default',['../util', '../assets', '../i18n'], function(util, 
     elements.connectForm = cEl('form');
     elements.connectForm.setAttribute('novalidate', '');
     elements.connectForm.innerHTML = [
-      '<input type="email" placeholder="user@host" name="userAddress" novalidate>',
+      '<input type="email" placeholder="user@provider.com" name="userAddress" novalidate>',
       '<button class="connect" value="" name="connect">'
     ].join('');
     var connectIcon = cEl('img');
@@ -6716,6 +6762,7 @@ define('lib/widget',[
 
   function initialSync() {
     if(settings.get('initialSyncDone')) {
+      schedule.enable();
       store.fireInitialEvents().then(util.curry(events.emit, 'ready'));
     } else {
       setState('busy', true);
